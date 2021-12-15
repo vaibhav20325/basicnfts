@@ -12,7 +12,7 @@ const delayMS = 1000 //sometimes xDAI needs a 6000ms break lol 😅
 const main = async () => {
 
   // ADDRESS TO MINT TO:
-  const toAddress = "0x3Ad52d2068e269E76de5CD7c881Dc617f79122c9"
+  const toAddress = "0x29372376FD79F95B0bd94364d1cD4B2291F0cb58"
 
   console.log("\n\n 🎫 Minting to "+toAddress+"...\n");
 
@@ -199,6 +199,58 @@ const main = async () => {
   await yourCollectible.mintItem(toAddress,uploadedgodzilla.path,{gasLimit:10000000})
 
 
+
+  const snek = {
+    "description": "Ssssss!",
+    "external_url": "https://www.macmillandictionary.com/external/slideshow/full/",// <-- this can link to a page for the specific file too
+    "image": "https://www.macmillandictionary.com/external/slideshow/full/emoji_snake_full.jpg",
+    "name": "Snek",
+    "attributes": [
+       {
+         "trait_type": "BackgroundColor",
+         "value": "orange"
+       },
+       {
+         "trait_type": "Eyes",
+         "value": "googly"
+       },
+       {
+         "trait_type": "Stamina",
+         "value": 10
+       }
+    ]
+  }
+  console.log("Uploading snek...")
+  const uploadedsnek = await ipfs.add(JSON.stringify(snek))
+
+  console.log("Minting snek with IPFS hash ("+uploadedsnek.path+")")
+  await yourCollectible.mintItem(toAddress,uploadedsnek.path,{gasLimit:10000000})
+
+  const snek2 = {
+    "description": "Ssssss!",
+    "external_url": "https://cdn.pixabay.com/photo/2019/02/06/17/09/",// <-- this can link to a page for the specific file too
+    "image": "https://cdn.pixabay.com/photo/2019/02/06/17/09/snake-3979601__480.jpg",
+    "name": "Snek",
+    "attributes": [
+       {
+         "trait_type": "BackgroundColor",
+         "value": "orange"
+       },
+       {
+         "trait_type": "Eyes",
+         "value": "googly"
+       },
+       {
+         "trait_type": "Stamina",
+         "value": 10
+       }
+    ]
+  }
+  console.log("Uploading snek2...")
+  const uploadedsnek2 = await ipfs.add(JSON.stringify(snek2))
+
+  console.log("Minting snek2 with IPFS hash ("+uploadedsnek2.path+")")
+  await yourCollectible.mintItem(toAddress,uploadedsnek2.path,{gasLimit:10000000})
 
 
   //await sleep(delayMS)
